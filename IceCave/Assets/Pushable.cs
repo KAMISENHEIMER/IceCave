@@ -5,10 +5,10 @@ using UnityEngine;
 public class Pushable : MonoBehaviour
 {
     [SerializeField] private float pushTime;
-    [SerializeField] private Vector2 lerpPosition;
+    private Vector2 lerpPosition;
     [SerializeField] private bool testMove;
     
-    [SerializeField] private List<Pushable> connectedPushables = new List<Pushable>();
+    private List<Pushable> connectedPushables = new List<Pushable>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -100,8 +100,6 @@ public class Pushable : MonoBehaviour
             }
         }
         
-
-        connectedPushables = new List<Pushable>();
     }
 
     public void doPush(Vector2 direction)
