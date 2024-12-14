@@ -7,7 +7,8 @@ public class Pushable : MonoBehaviour
     [SerializeField] private float pushTime;
     private Vector2 lerpPosition;
     [SerializeField] private bool testMove;
-    
+    public bool isMoving { get; private set; }
+
     private List<Pushable> connectedPushables = new List<Pushable>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -54,6 +55,7 @@ public class Pushable : MonoBehaviour
             if ((Vector2)transform.position == lerpPosition)
             {
                 lerpPosition = Vector2.zero;
+                //isMoving = false;
             }
         }
     }
@@ -68,7 +70,7 @@ public class Pushable : MonoBehaviour
 
         if (hit)
         {
-            while (hit.collider != null)
+            while (hit.collider != null && (hit.transform.tag == "immovables" || hit.transform.tag == "pushables"))
             {
                 if (hit.collider.transform.tag == "immovables")
                 {
@@ -77,7 +79,7 @@ public class Pushable : MonoBehaviour
                     return;
                 }
 
-
+                
 
                 if (hit.collider.GetComponent<Pushable>() != null)
                 {
@@ -104,6 +106,7 @@ public class Pushable : MonoBehaviour
 
     public void doPush(Vector2 direction)
     {
+        //isMoving = true;
         lerpPosition = (Vector2)transform.position + direction;
     }
 }
