@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //moves based on the player speed, the time, and the movement direction
         //Time.fixedDeltaTime is to ensure altering frame rates do not affect speed
-        rb.MovePosition(rb.position+(speed * Time.fixedDeltaTime * direction));
-
+        //rb.MovePosition(rb.position+(speed * Time.fixedDeltaTime * direction));
+        rb.linearVelocity = direction * speed;
     }
 }

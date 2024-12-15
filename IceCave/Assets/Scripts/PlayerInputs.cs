@@ -13,6 +13,8 @@ public class PlayerInputs : MonoBehaviour
     private Vector2 mousePosition;
 
     private Vector2 lastMovedDirection;
+
+    [SerializeField] private Vector2 facingDirection;
     
     // Update is called once per frame
     void Update()
@@ -27,56 +29,48 @@ public class PlayerInputs : MonoBehaviour
         movementVector = movementVector.normalized;
         */
         // I like this, but i dont think diagonal movement works with our game
-        
-        if (Input.GetKey("w")) {
-            movementVector = Vector2.up;
-            lastMovedDirection = movementVector;
-            
-            animator.SetBool("left", false);
-            animator.SetBool("down", false);
-            animator.SetBool("right", false);
-            
-            animator.SetBool("up", true);
 
-        }
-        else if (Input.GetKey("a")) {
-            movementVector = Vector2.left;
-            lastMovedDirection = movementVector;
-            
-            animator.SetBool("up", false);
-            animator.SetBool("down", false);
-            animator.SetBool("right", false);
-            
-            animator.SetBool("left", true);
-        }
-        else if (Input.GetKey("s")) {
-            movementVector = Vector2.down;
-            lastMovedDirection = movementVector;
-            
-            animator.SetBool("left", false);
-            animator.SetBool("up", false);
-            animator.SetBool("right", false);
-            
-            animator.SetBool("down", true);
 
-        }
-        else if (Input.GetKey("d")) {
-            movementVector = Vector2.right;
-            lastMovedDirection = movementVector;
-            
-            animator.SetBool("left", false);
-            animator.SetBool("down", false);
-            animator.SetBool("up", false);
-            
-            animator.SetBool("right", true);
 
+        movementVector.x = Input.GetAxisRaw("Horizontal");
+        movementVector.y = Input.GetAxisRaw("Vertical");
+        if (movementVector != Vector2.zero)
+        {
+            
+            facingDirection = movementVector;
+            //new Vector2(Mathf.Round(movementVector.x), Mathf.Round(movementVector.y)
         }
-        else {
-            movementVector = Vector2.zero;
-            animator.SetBool("left", false);
-            animator.SetBool("down", false);
-            animator.SetBool("right", false);
-            animator.SetBool("up", false);
+        movementVector.Normalize();
+
+        animator.SetBool("isMoving", movementVector != Vector2.zero);
+        animator.SetFloat("Horizontal", facingDirection.x);
+        animator.SetFloat("Vertical", facingDirection.y);
+
+
+        Debug.DrawLine((Vector2)transform.position, (Vector2)transform.position + facingDirection / 1.5f);
+
+        if (Input.GetKeyDown("space")) {
+            
+            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position, (Vector2)transform.position + facingDirection/1.5f);
+            if (hit)
+            {
+                Debug.Log(hit.collider.name);
+            }
+            if (hit && hit.collider != null && hit.transform.tag == "pushables" && hit.collider.GetComponent<Pushable>() != null)
+            {
+                float xOffset = transform.position.x - hit.collider.transform.position.x;
+                float yOffset = transform.position.y - hit.collider.transform.position.y;
+
+                
+
+                if (Mathf.Abs(xOffset) > Mathf.Abs(yOffset))
+                    hit.collider.GetComponent<Pushable>().tryPush(new Vector2(-Mathf.Sign(xOffset), 0));
+                else
+                    hit.collider.GetComponent<Pushable>().tryPush(new Vector2(0, -Mathf.Sign(yOffset)));
+
+
+
+            }
         }
 
         // converts mouse position from screen coordinates to game coordinates  
@@ -86,23 +80,17 @@ public class PlayerInputs : MonoBehaviour
         if (hitFreeze && hitFreeze.name == "Water")
         {
             freezeSelector.moveSelector(mousePosition);
-            
-            if (Input.GetButtonDown("Fire1")) {
+
+            if (Input.GetButtonDown("Fire1"))
+            {
                 freezeSelector.freeze(hitFreeze);
             }
-        } else {
+        }
+        else
+        {
             freezeSelector.hideSelector();
         }
-        
-        if (Input.GetKeyDown("space")) {
-            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position, (Vector2)transform.position + lastMovedDirection);
-            
-            if (hit && hit.collider != null && hit.transform.tag == "pushables" && hit.collider.GetComponent<Pushable>() != null)
-            { 
-                hit.collider.GetComponent<Pushable>().tryPush(lastMovedDirection); 
-            }
-        }
-        
+
     }
     
     private void FixedUpdate()
