@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using System.Collections;
+using System.Collections.Generic;
 public class PlayerInputs : MonoBehaviour
 {
     public PlayerMovement playerMovement;
@@ -19,19 +20,6 @@ public class PlayerInputs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        //gets input directions for X and Y
-        
-        movementVector.x = Input.GetAxis("Horizontal");
-        movementVector.y = Input.GetAxis("Vertical");
-        
-        //makes sure diagonal movement is the same speed as vertical/horizontal
-        movementVector = movementVector.normalized;
-        */
-        // I like this, but i dont think diagonal movement works with our game
-
-
-
         movementVector.x = Input.GetAxisRaw("Horizontal");
         movementVector.y = Input.GetAxisRaw("Vertical");
         if (movementVector != Vector2.zero)
@@ -59,7 +47,7 @@ public class PlayerInputs : MonoBehaviour
                 float yOffset = transform.position.y - hit.collider.transform.position.y;
 
 
-                animator.SetTrigger("Push");
+                StartCoroutine("ToggleAnimBool", "isPushing");
                 if (Mathf.Abs(xOffset) > Mathf.Abs(yOffset))
                     hit.collider.GetComponent<Pushable>().tryPush(new Vector2(-Mathf.Sign(xOffset), 0));
                 else
@@ -93,5 +81,12 @@ public class PlayerInputs : MonoBehaviour
     private void FixedUpdate()
     {
         playerMovement.MovePlayer(movementVector);
+    }
+
+    IEnumerator ToggleAnimBool(string animBool)
+    {
+        animator.SetBool(animBool, true);
+        yield return new WaitForSeconds(0.25f);
+        animator.SetBool(animBool, false);
     }
 }
