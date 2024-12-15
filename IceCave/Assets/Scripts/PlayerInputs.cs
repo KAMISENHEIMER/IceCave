@@ -5,6 +5,8 @@ public class PlayerInputs : MonoBehaviour
     public PlayerMovement playerMovement;
     public FreezeSelector freezeSelector;
     
+    public Animator animator;
+    
     private Vector2 movementVector;
 
     // Update is called once per frame
@@ -23,18 +25,49 @@ public class PlayerInputs : MonoBehaviour
         
         if (Input.GetKey("w")) {
             movementVector = Vector2.up;
+            
+            animator.SetBool("left", false);
+            animator.SetBool("down", false);
+            animator.SetBool("right", false);
+            
+            animator.SetBool("up", true);
+
         }
         else if (Input.GetKey("a")) {
             movementVector = Vector2.left;
+            
+            animator.SetBool("up", false);
+            animator.SetBool("down", false);
+            animator.SetBool("right", false);
+            
+            animator.SetBool("left", true);
         }
         else if (Input.GetKey("s")) {
             movementVector = Vector2.down;
+            
+            animator.SetBool("left", false);
+            animator.SetBool("up", false);
+            animator.SetBool("right", false);
+            
+            animator.SetBool("down", true);
+
         }
         else if (Input.GetKey("d")) {
             movementVector = Vector2.right;
+            
+            animator.SetBool("left", false);
+            animator.SetBool("down", false);
+            animator.SetBool("up", false);
+            
+            animator.SetBool("right", true);
+
         }
         else {
             movementVector = Vector2.zero;
+            animator.SetBool("left", false);
+            animator.SetBool("down", false);
+            animator.SetBool("right", false);
+            animator.SetBool("up", false);
         }
     }
     
