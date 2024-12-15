@@ -2,15 +2,31 @@ using UnityEngine;
 
 public class FreezeSelector : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject freezeSelectorPrefab;
+    private GameObject freezeSelector;
+
     void Start()
     {
-        
+        freezeSelector = Instantiate(freezeSelectorPrefab);
+        freezeSelector.SetActive(false);
+    }
+    
+    //makes the freezeSelector icon over the water (or other freezeable object) it is touching
+    public void moveSelector(Vector2 mousePosition)
+    {
+        freezeSelector.SetActive(true);
+        Vector2 newPos = new Vector2(Mathf.Round(mousePosition.x), Mathf.Round(mousePosition.y));   //clamps the sprite to the grid
+        freezeSelector.transform.position = newPos;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void hideSelector()
     {
-        
+        freezeSelector.SetActive(false);
+    }
+
+    public void freeze(Collider2D collider)
+    {
+        //is called whenever mouse1 is pressed and the mouse is over water (or other freezable object)
+        Debug.Log(collider.name + " was clicked");
     }
 }

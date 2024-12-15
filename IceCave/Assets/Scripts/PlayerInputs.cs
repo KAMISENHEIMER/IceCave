@@ -9,6 +9,11 @@ public class PlayerInputs : MonoBehaviour
     
     private Vector2 movementVector;
 
+    private bool mouseDown;
+    private Vector2 mousePosition;
+
+    private Vector2 lastMovedDirection;
+    
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +30,7 @@ public class PlayerInputs : MonoBehaviour
         
         if (Input.GetKey("w")) {
             movementVector = Vector2.up;
+            lastMovedDirection = movementVector;
             
             animator.SetBool("left", false);
             animator.SetBool("down", false);
@@ -35,6 +41,7 @@ public class PlayerInputs : MonoBehaviour
         }
         else if (Input.GetKey("a")) {
             movementVector = Vector2.left;
+            lastMovedDirection = movementVector;
             
             animator.SetBool("up", false);
             animator.SetBool("down", false);
@@ -44,6 +51,7 @@ public class PlayerInputs : MonoBehaviour
         }
         else if (Input.GetKey("s")) {
             movementVector = Vector2.down;
+            lastMovedDirection = movementVector;
             
             animator.SetBool("left", false);
             animator.SetBool("up", false);
@@ -54,6 +62,7 @@ public class PlayerInputs : MonoBehaviour
         }
         else if (Input.GetKey("d")) {
             movementVector = Vector2.right;
+            lastMovedDirection = movementVector;
             
             animator.SetBool("left", false);
             animator.SetBool("down", false);
@@ -69,6 +78,31 @@ public class PlayerInputs : MonoBehaviour
             animator.SetBool("right", false);
             animator.SetBool("up", false);
         }
+
+        // converts mouse position from screen coordinates to game coordinates  
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Collider2D hitFreeze = Physics2D.OverlapPoint(mousePosition);
+        if (hitFreeze && hitFreeze.name == "Water")
+        {
+            freezeSelector.moveSelector(mousePosition);
+            
+            if (Input.GetButtonDown("Fire1")) {
+                freezeSelector.freeze(hitFreeze);
+            }
+        } else {
+            freezeSelector.hideSelector();
+        }
+        
+        if (Input.GetKeyDown("space")) {
+            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position, (Vector2)transform.position + lastMovedDirection);
+            
+            if (hit && hit.collider != null && hit.transform.tag == "pushables" && hit.collider.GetComponent<Pushable>() != null)
+            { 
+                hit.collider.GetComponent<Pushable>().tryPush(lastMovedDirection); 
+            }
+        }
+        
     }
     
     private void FixedUpdate()
