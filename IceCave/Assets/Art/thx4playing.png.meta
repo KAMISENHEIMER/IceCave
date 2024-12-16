@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 4a96fed87e2be4e4089e8beeee6c2496
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6967753753741515730
+    second: thx4playing_0
+  - first:
+      213: -5335049752402119095
+    second: thx4playing_1
+  - first:
+      213: 5207581734676367719
+    second: thx4playing_2
+  - first:
+      213: 1631849059329589800
+    second: thx4playing_3
+  - first:
+      213: -416423382712898715
+    second: thx4playing_4
+  - first:
+      213: 8115849368556027006
+    second: thx4playing_5
+  - first:
+      213: -8301404317101359536
+    second: thx4playing_6
+  - first:
+      213: -4305849581498856801
+    second: thx4playing_7
+  - first:
+      213: 8362643773054690692
+    second: thx4playing_8
+  - first:
+      213: 3431421540651837563
+    second: thx4playing_9
+  - first:
+      213: -5113786374823149429
+    second: thx4playing_10
+  - first:
+      213: 5362928401254116195
+    second: thx4playing_11
+  - first:
+      213: -5095932961414906366
+    second: thx4playing_12
+  - first:
+      213: -8816558559649979369
+    second: thx4playing_13
+  - first:
+      213: 843285934821583931
+    second: thx4playing_14
+  - first:
+      213: 1840046897041029382
+    second: thx4playing_15
+  - first:
+      213: -6401415599103541447
+    second: thx4playing_16
+  - first:
+      213: 673274024595951942
+    second: thx4playing_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: thx4playing_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 39
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e24a7d1b0e09d4f90800000000000000
+      internalID: -6967753753741515730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 39
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9463909348816f5b0800000000000000
+      internalID: -5335049752402119095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_2
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 39
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 769823a2ffb054840800000000000000
+      internalID: 5207581734676367719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_3
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 39
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8224564d21e75a610800000000000000
+      internalID: 1631849059329589800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_4
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 39
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56b2b35c321983af0800000000000000
+      internalID: -416423382712898715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_5
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 39
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7c3c57400a41a070800000000000000
+      internalID: 8115849368556027006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_6
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 39
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05e774e91cc7bcc80800000000000000
+      internalID: -8301404317101359536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_7
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 39
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9a0f767e9c8e34c0800000000000000
+      internalID: -4305849581498856801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_8
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 39
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 485ae0454341e0470800000000000000
+      internalID: 8362643773054690692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_9
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 39
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b782d25f5bbde9f20800000000000000
+      internalID: 3431421540651837563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_10
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 39
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b800f67d26e2809b0800000000000000
+      internalID: -5113786374823149429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_11
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 39
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36bea9887f2fc6a40800000000000000
+      internalID: 5362928401254116195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_12
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 39
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20ef8a398fb9749b0800000000000000
+      internalID: -5095932961414906366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_13
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 39
+        width: 9
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71422aeb3ba45a580800000000000000
+      internalID: -8816558559649979369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_14
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 39
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3caf1df614f3bb00800000000000000
+      internalID: 843285934821583931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_15
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 39
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 609b03467e8298910800000000000000
+      internalID: 1840046897041029382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_16
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 49
+        width: 9
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93ff9c3cd6a9927a0800000000000000
+      internalID: -6401415599103541447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thx4playing_17
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 39
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6411a808823f75900800000000000000
+      internalID: 673274024595951942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      thx4playing_0: -6967753753741515730
+      thx4playing_1: -5335049752402119095
+      thx4playing_10: -5113786374823149429
+      thx4playing_11: 5362928401254116195
+      thx4playing_12: -5095932961414906366
+      thx4playing_13: -8816558559649979369
+      thx4playing_14: 843285934821583931
+      thx4playing_15: 1840046897041029382
+      thx4playing_16: -6401415599103541447
+      thx4playing_17: 673274024595951942
+      thx4playing_2: 5207581734676367719
+      thx4playing_3: 1631849059329589800
+      thx4playing_4: -416423382712898715
+      thx4playing_5: 8115849368556027006
+      thx4playing_6: -8301404317101359536
+      thx4playing_7: -4305849581498856801
+      thx4playing_8: 8362643773054690692
+      thx4playing_9: 3431421540651837563
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
