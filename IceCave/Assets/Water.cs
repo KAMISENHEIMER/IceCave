@@ -21,17 +21,32 @@ public class Water : MonoBehaviour, IFreezable
 
     public void ToggleFreeze(Vector2 position)
     {
+        Ice ice = replacement.GetComponent<Ice>();
+
+        
+
         Vector3Int cellPosition = source.WorldToCell(position);
 
         TileBase sourceTile = source.GetTile(cellPosition);
 
         if(sourceTile != null)
         {
+            if (ice.icePositions.Count == ice.maxIceTiles)
+            {
+                if (ice.CheckForBox(ice.icePositions[0]) == true)
+                {
+                    ice.CantFreezeError();
+                    return;
+                }
+            }
+
+            replacement.GetComponent<Ice>().icePositions.Add(position);
+
             source.SetTile(cellPosition, null);
             replacement.SetTile(cellPosition, tileReplace);
         }
 
-        replacement.GetComponent<Ice>()?.icePositions.Add(position);
+        
 
 
     }
