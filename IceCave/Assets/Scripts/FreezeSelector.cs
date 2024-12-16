@@ -20,19 +20,21 @@ public class FreezeSelector : MonoBehaviour
         sr = freezeSelector.GetComponent<SpriteRenderer>();
     }
     
-    //makes the freezeSelector icon over the water (or other freezeable object) it is touching
+    //moves the icon
     public void moveSelector(Vector2 mousePosition)
     {
-        color.a = 1f;
         Vector2 newPos = new Vector2(Mathf.Round(mousePosition.x), Mathf.Round(mousePosition.y));   //clamps the sprite to the grid
         freezeSelector.transform.position = newPos;
     }
 
+    // shows/hides the selector by making it transparant or opaque
+    public void showSelector()
+    {
+        color.a = 1f;
+    }
     public void hideSelector()
     {
-
-        color.a = 0f;
-        
+        color.a = 0.5f;
     }
 
     public void freeze(Collider2D collider)

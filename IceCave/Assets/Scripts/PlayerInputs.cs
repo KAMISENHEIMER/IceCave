@@ -62,11 +62,12 @@ public class PlayerInputs : MonoBehaviour
 
         // converts mouse position from screen coordinates to game coordinates  
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+        freezeSelector.moveSelector(mousePosition);
+        
         Collider2D hitFreeze = Physics2D.OverlapPoint(mousePosition);
         if (hitFreeze && hitFreeze.GetComponent<IFreezable>() != null)
         {
-            freezeSelector.moveSelector(mousePosition);
+            freezeSelector.showSelector();
 
             if (Input.GetButtonDown("Fire1"))
             {
