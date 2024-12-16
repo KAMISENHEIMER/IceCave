@@ -9,6 +9,8 @@ public class Pushable : MonoBehaviour
     [SerializeField] private bool testMove;
     public bool isMoving { get; private set; }
 
+    public Vector2 lastPushDir { get; private set; } = Vector2.zero;
+
     private List<Pushable> connectedPushables = new List<Pushable>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -104,11 +106,13 @@ public class Pushable : MonoBehaviour
                 pushable.doPush(direction);
             }
         }
-        
+
+        lastPushDir = direction;
     }
 
     public void doPush(Vector2 direction)
     {
+        
         isMoving = true;
         lerpPosition = (Vector2)transform.position + direction;
     }

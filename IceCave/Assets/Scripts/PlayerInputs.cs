@@ -71,8 +71,9 @@ public class PlayerInputs : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1"))
             {
-                freezeSelector.freeze(hitFreeze);
 
+                freezeSelector.freeze(hitFreeze);
+                StartCoroutine("ToggleAnimBool", "isCasting");
                 hitFreeze.GetComponent<IFreezable>().ToggleFreeze(mousePosition);
             }
         }
