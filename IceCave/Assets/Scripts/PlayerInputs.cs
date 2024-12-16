@@ -39,7 +39,7 @@ public class PlayerInputs : MonoBehaviour
 
         if (Input.GetKeyDown("space")) {
             
-            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position, (Vector2)transform.position + facingDirection/1.5f);
+            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position, (Vector2)transform.position + facingDirection/1.5f, LayerMask.NameToLayer("pushables"));
             
             if (hit && hit.collider != null && hit.transform.tag == "pushables" && hit.collider.GetComponent<Pushable>() != null)
             {

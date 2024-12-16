@@ -55,13 +55,16 @@ public class Pushable : MonoBehaviour
             if ((Vector2)transform.position == lerpPosition)
             {
                 lerpPosition = Vector2.zero;
-                //isMoving = false;
+                isMoving = false;
             }
         }
     }
 
     public void tryPush(Vector2 direction)
     {
+        if (isMoving)
+            return;
+
         connectedPushables = new List<Pushable>();
 
         connectedPushables.Add(this);
@@ -106,7 +109,7 @@ public class Pushable : MonoBehaviour
 
     public void doPush(Vector2 direction)
     {
-        //isMoving = true;
+        isMoving = true;
         lerpPosition = (Vector2)transform.position + direction;
     }
 }

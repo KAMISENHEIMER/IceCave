@@ -6,6 +6,7 @@ TagManager:
   tags:
   - pushables
   - immovables
+  - ice
   layers:
   - Default
   - TransparentFX

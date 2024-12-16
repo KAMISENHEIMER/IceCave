@@ -18,6 +18,29 @@ public class Ice : MonoBehaviour, IFreezable
         
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("hit");
+        Pushable pushable = collision.GetComponent<Pushable>();
+        if (pushable != null)
+        {
+            float xOffset = transform.position.x - collision.transform.position.x;
+            float yOffset = transform.position.y - collision.transform.position.y;
+
+
+            
+            if (Mathf.Abs(xOffset) > Mathf.Abs(yOffset))
+                pushable.tryPush(new Vector2(-Mathf.Sign(xOffset), 0));
+            else
+                pushable.tryPush(new Vector2(0, -Mathf.Sign(yOffset)));
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("hit");
+    }
+
     void Update()
     {
         if(icePositions.Count > maxIceTiles)
