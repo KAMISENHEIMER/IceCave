@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+
 public class PlayerInputs : MonoBehaviour
 {
     public PlayerMovement playerMovement;
@@ -74,6 +76,13 @@ public class PlayerInputs : MonoBehaviour
         else
         {
             freezeSelector.hideSelector();
+        }
+        
+        //resets the level
+        if (Input.GetKeyDown("r"))
+        {
+            //loads the current scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
     }
