@@ -15,7 +15,7 @@ public class LevelDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Snowflake.collectedSnowflakes <= RequiredSnowflakes && !unlocked)
+        if(Snowflake.collectedSnowflakes >= RequiredSnowflakes && !unlocked)
         {
             door.Open();
             unlocked = true;
