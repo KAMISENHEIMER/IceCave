@@ -26,7 +26,7 @@ public class Ice : MonoBehaviour, IFreezable
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.transform.tag == "pushables")
+        if(collision.transform.tag == "pushables" || collision.transform.tag == "Player")
         {
             Vector2 colPos = collision.transform.position;
 
@@ -43,7 +43,7 @@ public class Ice : MonoBehaviour, IFreezable
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.tag == "pushables")
+        if (collision.transform.tag == "pushables" || collision.transform.tag == "Player")
         {
             Vector2 colPos = collision.transform.position;
 

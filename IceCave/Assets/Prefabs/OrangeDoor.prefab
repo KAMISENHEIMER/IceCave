@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 4362087113418263891}
   - component: {fileID: 6353117578847548582}
   m_Layer: 0
-  m_Name: RedDoor
+  m_Name: OrangeDoor
   m_TagString: immovables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6367949786255721034, guid: fcd3e595b82a2cf40b27ad11fc47a557, type: 3}
+  m_Sprite: {fileID: -1302814641, guid: fcd3e595b82a2cf40b27ad11fc47a557, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -241,4 +241,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   shouldClose: 0
-  colorIndex: 3
+  colorIndex: 2

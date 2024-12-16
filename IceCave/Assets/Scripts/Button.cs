@@ -3,24 +3,37 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     // The door that this button opens
-    public GameObject door;
-    Collider2D doorCollider;
+    public Door[] doors;
+    public int colorIndex;
+
+    Animator anim;
 
     void Start()
     {
-        doorCollider = door.GetComponent<Collider2D>();
+        anim = GetComponent<Animator>();
+        anim.SetFloat("Color", colorIndex);
     }
     
     void OnTriggerEnter2D(Collider2D otherCollider)
     {
         Debug.Log("Button Pressed");
-        doorCollider.enabled = false;
+        foreach(Door door in doors)
+        {
+            door.Open();
+        }
+
+        
+        anim.SetBool("buttonDown", true);
     }
     
     void OnTriggerExit2D(Collider2D otherCollider)
     {
         Debug.Log("Button Unpressed");
-        doorCollider.enabled = true;
+        foreach (Door door in doors)
+        {
+            door.TryClose();
+        }
+        anim.SetBool("buttonDown", false);
 
     }
 }
