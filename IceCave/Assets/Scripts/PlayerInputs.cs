@@ -41,7 +41,7 @@ public class PlayerInputs : MonoBehaviour
 
         if (Input.GetKeyDown("space")) {
             
-            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position, (Vector2)transform.position + facingDirection/1.5f);
+            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position, (Vector2)transform.position + facingDirection/1.5f, LayerMask.NameToLayer("pushables"));
             
             if (hit && hit.collider != null && hit.transform.tag == "pushables" && hit.collider.GetComponent<Pushable>() != null)
             {
@@ -64,13 +64,15 @@ public class PlayerInputs : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         Collider2D hitFreeze = Physics2D.OverlapPoint(mousePosition);
-        if (hitFreeze && hitFreeze.name == "Water")
+        if (hitFreeze && hitFreeze.GetComponent<IFreezable>() != null)
         {
             freezeSelector.moveSelector(mousePosition);
 
             if (Input.GetButtonDown("Fire1"))
             {
                 freezeSelector.freeze(hitFreeze);
+
+                hitFreeze.GetComponent<IFreezable>().ToggleFreeze(mousePosition);
             }
         }
         else
