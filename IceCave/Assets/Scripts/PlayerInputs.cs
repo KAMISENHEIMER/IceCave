@@ -46,22 +46,22 @@ public class PlayerInputs : MonoBehaviour
 
         if (Input.GetKeyDown("space")) {
             
-            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position, (Vector2)transform.position + facingDirection/1.5f, LayerMask.NameToLayer("pushables"));
-            
-            if (hit && hit.collider != null && hit.transform.tag == "pushables" && hit.collider.GetComponent<Pushable>() != null)
+            RaycastHit2D[] hits = Physics2D.LinecastAll((Vector2)transform.position, (Vector2)transform.position + facingDirection/1.5f, LayerMask.NameToLayer("pushables"));
+            foreach (var hit in hits)
             {
-                float xOffset = transform.position.x - hit.collider.transform.position.x;
-                float yOffset = transform.position.y - hit.collider.transform.position.y;
+                if (hit && hit.collider != null && hit.transform.tag == "pushables" && hit.collider.GetComponent<Pushable>() != null)
+                {
+                    float xOffset = transform.position.x - hit.collider.transform.position.x;
+                    float yOffset = transform.position.y - hit.collider.transform.position.y;
 
 
-                StartCoroutine("ToggleAnimBool", "isPushing");
-                if (Mathf.Abs(xOffset) > Mathf.Abs(yOffset))
-                    hit.collider.GetComponent<Pushable>().tryPush(new Vector2(-Mathf.Sign(xOffset), 0));
-                else
-                    hit.collider.GetComponent<Pushable>().tryPush(new Vector2(0, -Mathf.Sign(yOffset)));
+                    StartCoroutine("ToggleAnimBool", "isPushing");
+                    if (Mathf.Abs(xOffset) > Mathf.Abs(yOffset))
+                        hit.collider.GetComponent<Pushable>().tryPush(new Vector2(-Mathf.Sign(xOffset), 0));
+                    else
+                        hit.collider.GetComponent<Pushable>().tryPush(new Vector2(0, -Mathf.Sign(yOffset)));
 
-
-
+                }
             }
         }
 
