@@ -18,14 +18,18 @@ public class PlayerInputs : MonoBehaviour
     private Vector2 lastMovedDirection;
 
     [SerializeField] private Vector2 facingDirection;
+
+    void Start()
+    {
+        //makes the player face toward the middle of the screen when they spawn in
+        facingDirection = Vector3.zero - playerMovement.rb.transform.position;
+        animator.SetFloat("Horizontal", facingDirection.x);
+        animator.SetFloat("Vertical", facingDirection.y);
+    }
     
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
 
         movementVector.x = Input.GetAxisRaw("Horizontal");
         movementVector.y = Input.GetAxisRaw("Vertical");
@@ -46,22 +50,22 @@ public class PlayerInputs : MonoBehaviour
 
         if (Input.GetKeyDown("space")) {
             
-            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position, (Vector2)transform.position + facingDirection/1.5f, LayerMask.NameToLayer("pushables"));
-            
-            if (hit && hit.collider != null && hit.transform.tag == "pushables" && hit.collider.GetComponent<Pushable>() != null)
+            RaycastHit2D[] hits = Physics2D.LinecastAll((Vector2)transform.position, (Vector2)transform.position + facingDirection/1.5f, LayerMask.NameToLayer("pushables"));
+            foreach (var hit in hits)
             {
-                float xOffset = transform.position.x - hit.collider.transform.position.x;
-                float yOffset = transform.position.y - hit.collider.transform.position.y;
+                if (hit && hit.collider != null && hit.transform.tag == "pushables" && hit.collider.GetComponent<Pushable>() != null)
+                {
+                    float xOffset = transform.position.x - hit.collider.transform.position.x;
+                    float yOffset = transform.position.y - hit.collider.transform.position.y;
 
 
-                StartCoroutine("ToggleAnimBool", "isPushing");
-                if (Mathf.Abs(xOffset) > Mathf.Abs(yOffset))
-                    hit.collider.GetComponent<Pushable>().tryPush(new Vector2(-Mathf.Sign(xOffset), 0));
-                else
-                    hit.collider.GetComponent<Pushable>().tryPush(new Vector2(0, -Mathf.Sign(yOffset)));
+                    StartCoroutine("ToggleAnimBool", "isPushing");
+                    if (Mathf.Abs(xOffset) > Mathf.Abs(yOffset))
+                        hit.collider.GetComponent<Pushable>().tryPush(new Vector2(-Mathf.Sign(xOffset), 0));
+                    else
+                        hit.collider.GetComponent<Pushable>().tryPush(new Vector2(0, -Mathf.Sign(yOffset)));
 
-
-
+                }
             }
         }
 
