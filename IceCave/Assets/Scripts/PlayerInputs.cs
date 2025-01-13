@@ -18,6 +18,14 @@ public class PlayerInputs : MonoBehaviour
     private Vector2 lastMovedDirection;
 
     [SerializeField] private Vector2 facingDirection;
+
+    void Start()
+    {
+        //makes the player face toward the middle of the screen when they spawn in
+        facingDirection = Vector3.zero - playerMovement.rb.transform.position;
+        animator.SetFloat("Horizontal", facingDirection.x);
+        animator.SetFloat("Vertical", facingDirection.y);
+    }
     
     // Update is called once per frame
     void Update()
