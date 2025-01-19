@@ -62,10 +62,12 @@ public class Pushable : MonoBehaviour
         }
     }
 
-    public void tryPush(Vector2 direction)
+
+    //checks direction to see if it is possible to push
+    public bool canPush(Vector2 direction)
     {
         if (isMoving)
-            return;
+            return false;
 
         connectedPushables = new List<Pushable>();
 
@@ -81,8 +83,43 @@ public class Pushable : MonoBehaviour
                 {
                     Debug.Log("Can't move!");
 
-                    return;
+                    return false;
                 }
+
+
+
+                if (hit.collider.GetComponent<Pushable>() != null)
+                {
+                    connectedPushables.Add(hit.collider.GetComponent<Pushable>());
+
+                    Pushable currentPushable = connectedPushables[connectedPushables.Count - 1];
+
+                    hit = Physics2D.Linecast(currentPushable.transform.position, (Vector2)currentPushable.transform.position + direction);
+                }
+
+
+            }
+        }
+
+        return true;
+    }
+
+    public void tryPush(Vector2 direction)
+    {
+        if (canPush(direction) == false)
+            return;
+
+        connectedPushables = new List<Pushable>();
+
+        connectedPushables.Add(this);
+
+        RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position, (Vector2)transform.position + direction);
+
+        if (hit)
+        {
+            while (hit.collider != null && (hit.transform.tag == "immovables" || hit.transform.tag == "pushables"))
+            {
+                
 
                 
 

@@ -8,19 +8,31 @@ public class Slippery : MonoBehaviour
         
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    Pushable pushable;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        
+
         Debug.Log("hit");
-        Pushable pushable = collision.GetComponent<Pushable>();
-        if (pushable != null)
-        {
-            pushable.tryPush(pushable.lastPushDir);
-        }
+        pushable = collision.GetComponent<Pushable>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(pushable != null && pushable.isMoving == false)
+        {
+
+            if(pushable.canPush(pushable.lastPushDir) == false)
+                pushable = null;
+            else
+            {
+                pushable.tryPush(pushable.lastPushDir);
+                pushable = null;
+            }
+                
+        }
     }
 }
