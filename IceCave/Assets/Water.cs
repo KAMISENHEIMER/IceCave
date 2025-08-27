@@ -61,9 +61,9 @@ public class Water : MonoBehaviour, IFreezable
     {
         replacement.GetComponent<Ice>().ClearFirstFrozen();
     }
-    public void getIndexOfIcePosition(Vector2 position)
+    public int getIndexOfIcePosition(Vector2 position)
     {
-        replacement.GetComponent<Ice>().getIndexOfIcePosition(position);
+        return replacement.GetComponent<Ice>().getIndexOfIcePosition(position);
     }
-    
+
 }

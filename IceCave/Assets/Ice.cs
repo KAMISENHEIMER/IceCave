@@ -174,13 +174,26 @@ public class Ice : MonoBehaviour, IFreezable
     
     public int getIndexOfIcePosition(Vector2 position)
     {
+        Vector3Int cellPosition = source.WorldToCell(position);
+
         for (int i = 0; i < icePositions.Count; i++)
         {
-            if (icePositions[i] == position)
+            if (source.WorldToCell(icePositions[i]) == cellPosition)
             {
                 return i;
             }
         }
+
+
+
+        //DEBUGGING
+        string debug = "Couldnt find position " + position + " in icePositions:\n";
+        foreach (Vector2 pos in icePositions)
+        {
+            debug = debug + pos + "\n";
+        }
+        Debug.Log(debug);
+
         return -1;
     }
 }
