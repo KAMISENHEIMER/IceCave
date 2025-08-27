@@ -16,7 +16,7 @@ public class Ice : MonoBehaviour, IFreezable
 
     void Start()
     {
-        
+
     }
 
     public void CantFreezeError()
@@ -26,18 +26,18 @@ public class Ice : MonoBehaviour, IFreezable
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.transform.tag == "pushables" || collision.transform.tag == "Player")
+        if (collision.transform.tag == "pushables" || collision.transform.tag == "Player")
         {
             Vector2 colPos = collision.transform.position;
 
-            foreach(Vector2 icePos in icePositions)
+            foreach (Vector2 icePos in icePositions)
             {
                 if (source.WorldToCell(colPos) == source.WorldToCell(icePos))
                 {
                     BoxesOnIce.Add(collision.transform.gameObject);
                 }
             }
-            
+
         }
     }
 
@@ -63,7 +63,7 @@ public class Ice : MonoBehaviour, IFreezable
                             }
                         }
                     }
-                        
+
                     BoxesOnIce.Remove(collision.gameObject);
                 }
             }
@@ -73,15 +73,25 @@ public class Ice : MonoBehaviour, IFreezable
 
     void Update()
     {
-        if(icePositions.Count > maxIceTiles)
+        // if(icePositions.Count > maxIceTiles)
+        // {
+        //     if(CheckForBox(icePositions[0]) == false)
+        //     {
+        //         ToggleFreeze(icePositions[0]);
+
+        //     }
+
+        // }
+    }
+
+    //gets rid of the first tile on function call, instead of every frame
+    public void ClearFirstFrozen()
+    {
+        if (CheckForBox(icePositions[0]) == false)
         {
-            if(CheckForBox(icePositions[0]) == false)
-            {
-                ToggleFreeze(icePositions[0]);
-                
-            }
-            
+            ToggleFreeze(icePositions[0]);
         }
+
     }
 
     public void ToggleFreeze(Vector2 position)
@@ -97,12 +107,12 @@ public class Ice : MonoBehaviour, IFreezable
 
         TileBase sourceTile = source.GetTile(cellPosition);
 
-        if(sourceTile != null)
+        if (sourceTile != null)
         {
 
             if (icePositions.Count > 0)
             {
-                if(icePositions.Count > 1)
+                if (icePositions.Count > 1)
                 {
                     Debug.Log("Destroy?");
                     for (int i = 0; i < icePositions.Count; i++)
@@ -123,21 +133,21 @@ public class Ice : MonoBehaviour, IFreezable
                     }
                 }
 
-                
+
             }
 
             source.SetTile(cellPosition, null);
             replacement.SetTile(cellPosition, tileReplace);
 
 
-            
 
-            
-            
-            
+
+
+
+
         }
 
-        
+
     }
 
     public bool CheckForBox(Vector2 position)
@@ -155,5 +165,22 @@ public class Ice : MonoBehaviour, IFreezable
         }
 
         return false;
+    }
+
+    public int GetNumFrozenObjects()
+    {
+        return icePositions.Count;
+    }
+    
+    public int getIndexOfIcePosition(Vector2 position)
+    {
+        for (int i = 0; i < icePositions.Count; i++)
+        {
+            if (icePositions[i] == position)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class FreezeSelector : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class FreezeSelector : MonoBehaviour
 
     Color color = Color.white;
 
+    //for handeling how many things can be frozen at once.
+    //this should be here instead of the ice script, so that mutliple frozen objects abide by the maximum rule.
+    public int maxIceTiles = 3;
+    [SerializeField] public List<IFreezable> frozenObjects = new List<IFreezable>();
 
     private void Update()
     {
@@ -19,7 +24,7 @@ public class FreezeSelector : MonoBehaviour
         color.a = 0.5f;
         sr = freezeSelector.GetComponent<SpriteRenderer>();
     }
-    
+
     //moves the icon
     public void moveSelector(Vector2 mousePosition)
     {
@@ -37,11 +42,57 @@ public class FreezeSelector : MonoBehaviour
         color.a = 0.5f;
     }
 
-    public void freeze(Collider2D collider)
+    //is called whenever mouse1 is pressed and the mouse is over water (or other freezable object)
+    public void ToggleFreeze(Collider2D hitFreeze, Vector2 mousePosition)
     {
-        //is called whenever mouse1 is pressed and the mouse is over water (or other freezable object)
-        
-        Debug.Log(collider.name + " was clicked");
+        Debug.Log(hitFreeze.name + " was clicked");
 
+        //check how many frozen objects are apart of this freezable object
+        int NumFrozenParts = hitFreeze.GetComponent<IFreezable>().GetNumFrozenObjects();
+
+        //toggle freeze on the currently selected object
+        hitFreeze.GetComponent<IFreezable>().ToggleFreeze(mousePosition);
+
+        //if the number of frozen objects has increased, add it to the list, else remove it
+        if (hitFreeze.GetComponent<IFreezable>().GetNumFrozenObjects() > NumFrozenParts)
+            frozenObjects.Add(hitFreeze.GetComponent<IFreezable>());
+
+        else
+            //number of frozen parts decreased, check for ice (to make sure we remove the right instance of ice)
+            if (hitFreeze.GetComponent<IFreezable>().GetType() == typeof(Water))
+            {
+                posIndex = (hitFreeze.GetComponent<IFreezable>() as Water).getIndexOfIcePosition(mousePosition);    //returns index in the ice array, now skip any other objects until
+                //TODO: count down from the posIndex, skipping other objects then remove the water object when posIndex gets to 0
+            }
+            else    //not ice, just remove it
+                frozenObjects.Remove(hitFreeze.GetComponent<IFreezable>());
+
+        //remove the first frozen object if there are too many
+        if (frozenObjects.Count > maxIceTiles)
+        {
+            //because Ice is set up differently (keeps track of tile locations), it has to be handled differently
+            if (frozenObjects[0].GetType() == typeof(Water))
+            {
+                (frozenObjects[0] as Water).ClearFirstFrozen();
+            }
+            else
+            {
+                frozenObjects[0].ToggleFreeze(mousePosition);
+            }
+            frozenObjects.RemoveAt(0);
+        }
+
+        //DEBUGGING
+        string debug = "Frozen Objects:\n";
+        foreach (IFreezable obj in frozenObjects)
+        {
+            debug = debug + obj + "\n";
+        }
+        Debug.Log(debug);
+    }
+    
+    public int GetNumFrozenObjects()
+    {
+        return frozenObjects.Count;
     }
 }

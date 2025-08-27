@@ -35,4 +35,9 @@ public class Deer : MonoBehaviour, IFreezable
             sr.sprite = normalSprite;
         }
     }
+
+    public int GetNumFrozenObjects()
+    {
+        return isFrozen?1:0;
+    }
 }

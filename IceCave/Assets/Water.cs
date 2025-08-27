@@ -11,25 +11,25 @@ public class Water : MonoBehaviour, IFreezable
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        
+
     }
 
     public void ToggleFreeze(Vector2 position)
     {
         Ice ice = replacement.GetComponent<Ice>();
 
-        
+
 
         Vector3Int cellPosition = source.WorldToCell(position);
 
         TileBase sourceTile = source.GetTile(cellPosition);
 
-        if(sourceTile != null)
+        if (sourceTile != null)
         {
             if (ice.icePositions.Count == ice.maxIceTiles)
             {
@@ -46,8 +46,24 @@ public class Water : MonoBehaviour, IFreezable
             replacement.SetTile(cellPosition, tileReplace);
         }
 
-        
+
 
 
     }
+
+    public int GetNumFrozenObjects()
+    {
+        return replacement.GetComponent<Ice>().icePositions.Count;
+    }
+
+    //exists here so that FreezeSelector can unfreeze ice tiles from the water object.
+    public void ClearFirstFrozen()
+    {
+        replacement.GetComponent<Ice>().ClearFirstFrozen();
+    }
+    public void getIndexOfIcePosition(Vector2 position)
+    {
+        replacement.GetComponent<Ice>().getIndexOfIcePosition(position);
+    }
+    
 }
